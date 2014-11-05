@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="style.css" />
+		<script>//<![CDATA[
+window.addEventListener('load',function(){
+	var xhr=new XMLHttpRequest();
+	xhr.open('get','./options.json',false);
+//	xhr.send()
+	var options = //JSON.parse(xhr.responseText)||
+	{
+	head: [
+		{id:"bf923bc309c95a5f876a2d159756c7298c6b5d72fa2a8f0857107d1ef5b3a33f", value:"I'm interested in", next:'interest'},
+		{id:"bf923bc309c95a5f876a2d159756c7298c6b5d72fa2a8f0857107d1ef5b3a33f", value:"I want to study", next:'interest'}
+	],
+	interset: [
+		{id:"589e9231c226460195682eec0796e5771b132d4e335f4a89fc06a72642b11669", value:"Programming", next:'none'}
+	],
+	background: [
+		{id:"df133f9843f10079ff6cf029641c7300302a23e685f787a2277b05bcd265aca4", display:"Blue", value:"#00f"}
+	],
+	style: [
+		
+	],
+	none: []
+};
+	document.getElementById('h').addEventListener('change',function(){alert(this)});
+	for (var i in options.head){
+		var option = options.head[i];
+		var element = document.createElement('option');
+		element.innerHTML = option.value;
+		element.id = option.id;
+		document.getElementById('h').appendChild(element);
+	}
+});
+//]]>
+		</script>
+	</head>
+	<body>
+		<form>
+			<select id='h'>
+				<!--option value="I'm interested in">I'm interested in</option>
+				<option value="I want to pursue">I want to pursue</option>
+				<option value="I want to learn">I want to learn</option-->
+			</select>
+			<select id='a'>
+				<option value="programming">programming</option>
+				<option value="graphics design">graphics design</option>
+				<option value="law">law</option>
+			</select>
+			<input type="submit" onclick="window.open('./display.html#a='+a+',b='+b)" value="Take #selfie" />
+	</body>
+</html>

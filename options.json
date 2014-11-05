@@ -1,0 +1,15 @@
+{
+	head: [
+		{id:"bf923bc309c95a5f876a2d159756c7298c6b5d72fa2a8f0857107d1ef5b3a33f", value:"I'm interested in", next:'interest'}
+	],
+	interset: [
+		{id:"589e9231c226460195682eec0796e5771b132d4e335f4a89fc06a72642b11669", value:"Programming", next:'none'}
+	],
+	background: [
+		{id:"df133f9843f10079ff6cf029641c7300302a23e685f787a2277b05bcd265aca4", display:"Blue", value:"#00f"}
+	],
+	style: [
+		
+	],
+	none: []
+}
