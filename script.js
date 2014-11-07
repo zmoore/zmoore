@@ -9,7 +9,7 @@ window.addEventListener('load',function(){
 		{next:'interest', value:"I want to study"},
 		{next:'profession', value:"I want to be"},
 	],
-	interset: [
+	interest: [
 		{next: undefined, value:"programming"},
 		{next: undefined, value:"graphics Design"},
 		{next: undefined, value:"mathematics"},
@@ -23,7 +23,7 @@ window.addEventListener('load',function(){
 		{next: undefined, value:"like no one ever was.  To catch them is my real test.  To train them is my cause"},
 	],
 	background: [
-		{id:"cf29a5df9d45e176eeff809388b46c3a", value:"#00f", display:"Blue"},
+		{value:"#00f", display:"Blue"},
 	],
 	style: [
 		
@@ -33,27 +33,37 @@ window.addEventListener('load',function(){
 	var form = document.getElementById('form');
 
 	function addDropDown(opts){
-		var dropDown = document.createElement('select');
+		var self = {
+			remove: function(){
+					form.removeChild(self.element);
+					if (self.next) self.next.remove();
+				},
+			element: document.createElement('select'),
+			next: undefined,
+		}
+		
+		//Add options to selection
 		for (var i in opts){
-			var option = opts[i];
 			var element = document.createElement('option');
-			element.innerHTML = option.value;
-			element.id = option.id;
-			dropDown.appendChild(element);
+			element.innerHTML = opts[i].value;
+			self.element.appendChild(element);
 		}
-		var next = {
-			remove: undefined,
-			dropDown: undefined,
-		}
-		dropDown.addEventListener('change',function(){
+		
+		//Default selection is unselected
+		var defaultSelection = document.createElement('option')
+		self.element.appendChild(defaultSelection);
+		defaultSelection.selected = true;
+		defaultSelection.disabled = true;
+		
+		self.element.addEventListener('change',function(){
 			console.log(this.selectedOptions[0].value);
-			next.remove = function(){
-				//form.remove()
-			}
-			
-			
+			if (self.next)
+				self.next.remove();
+			if (opts[this.selectedIndex].next)
+				self.next = addDropDown(options[opts[this.selectedIndex].next]);
 		});
-		form.appendChild(dropDown);
+		form.appendChild(self.element);
+		return self
 	}
 	addDropDown(options.head)
 });
