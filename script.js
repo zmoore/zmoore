@@ -3,15 +3,24 @@ window.addEventListener('load',function(){
 	xhr.open('get','./options.json',false);
 //	xhr.send()
 	var options = //JSON.parse(xhr.responseText);
-	{
-	head: {
-		{id:"557dc2ed05f2c2dc677967a90828021e", next:'interest', value:"I'm interested in"},
-		{id:"0e32740b5ca002653dc59ebc03e6ffc8", next:'interest', value:"I want to study"},
-	},
+{
+	head: [
+		{next:'interest', value:"I'm interested in"},
+		{next:'interest', value:"I want to study"},
+		{next:'profession', value:"I want to be"},
+	],
 	interset: [
-		{id:"13a64ac4f4b7d658642e461c7e48e969", next: undefined, value:"Programming"},
-		{id:"13a64ac4f4b7d658642e461c7e48e969", next: undefined, value:"Graphics Design"},
-		{id:"13a64ac4f4b7d658642e461c7e48e969", next: undefined, value:"Mathematics"},
+		{next: undefined, value:"programming"},
+		{next: undefined, value:"graphics Design"},
+		{next: undefined, value:"mathematics"},
+	],
+	profession: [
+		{next: undefined, value:"a programmer"},
+		{next: undefined, value:"a web designer"},
+		{next: 'pokemon', value:"the very best"},
+	],
+	pokemon: [
+		{next: undefined, value:"like no one ever was.  To catch them is my real test.  To train them is my cause"},
 	],
 	background: [
 		{id:"cf29a5df9d45e176eeff809388b46c3a", value:"#00f", display:"Blue"},
@@ -39,7 +48,7 @@ window.addEventListener('load',function(){
 		dropDown.addEventListener('change',function(){
 			console.log(this.selectedOptions[0].value);
 			next.remove = function(){
-				
+				//form.remove()
 			}
 			
 			
