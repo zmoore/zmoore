@@ -1,20 +1,24 @@
 body {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 header, .header {
-  height: 50px;
-  background-color: black;
-  color: white;
+	height: 50px;
+	background-color: black;
+	color: white;
 }
 
 main, .main {
-  width: 900px;
-  margin: 0 auto;
+	width: 900px;
+	margin: 0 auto;
 }
 
 form {
-  margin: 0 auto;
-  background-color: grey;
+	margin: 0 auto;
+	background-color: grey;
+}
+
+[name="preview"]{
+	display: none;
 }

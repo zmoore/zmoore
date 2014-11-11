@@ -57,10 +57,12 @@ window.addEventListener('load',function(){
 		
 		self.element.addEventListener('change',function(){
 			console.log(this.selectedOptions[0].value);
-			if (self.next)
-				self.next.remove();
-			if (opts[this.selectedIndex].next)
-				self.next = addDropDown(options[opts[this.selectedIndex].next]);
+			if (self.next != opts[this.selectedIndex].next){
+				if (self.next)
+					self.next.remove();
+				if (opts[this.selectedIndex].next)
+					self.next = addDropDown(options[opts[this.selectedIndex].next]);
+			}
 		});
 		form.appendChild(self.element);
 		return self
