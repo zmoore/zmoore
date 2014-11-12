@@ -23,21 +23,18 @@ form {
 	display: none;
 }
 
-.background-select {
+[name="background"] {
 	color:transparent;
 	width: 50px;
 	height: 50px;
 }
 
-.background-select option {
-	color: black;
+[name="font"]  {
+	width: 100px;
+	height: 25px;
 }
 
 .background1 {
-	color: transparent;
-	width: 50px;
-	height: 50px;
-	
 	background-color:white;
 	background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%),
 	linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
@@ -45,10 +42,6 @@ form {
 }
 
 .background2 {
-	color: transparent;
-	width: 50px;
-	height: 50px;
-	
 	background-color:silver;
 	background-image:
 	radial-gradient(circle at 100% 150%, silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent),
@@ -60,10 +53,18 @@ form {
 }
 
 .background3 {
-	color: transparent;
-	width: 50px;
-	height: 50px;
-
 	background-color: gray;
 	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+
+.font1 {
+	font-family: "Comic Sans MS";
+}
+
+.font2 {
+	font-family: "Helvetica";
+}
+
+.font3 {
+	font-family: "Impact";
 }
