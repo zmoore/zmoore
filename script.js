@@ -31,23 +31,30 @@ window.addEventListener('load',function(){
 	none: [],
 };
 	var form = document.getElementById('form');
-
+	
+	var numDropdowns = 0;
+	
 	function addDropDown(opts){
+		numDropdowns++;
 		var self = {
 			remove: function(){
+					numDropdowns--;
 					form.removeChild(self.element);
 					if (self.next) self.next.remove();
 				},
 			element: document.createElement('select'),
 			next: undefined,
-		}
+		};
 		
 		//Add options to selection
 		for (var i in opts){
 			var element = document.createElement('option');
 			element.innerHTML = opts[i].value;
+			element.value = i
 			self.element.appendChild(element);
 		}
+		
+		self.element.name = numDropdowns;
 		
 		//Default selection is unselected
 		var defaultSelection = document.createElement('option')
@@ -65,7 +72,7 @@ window.addEventListener('load',function(){
 			}
 		});
 		form.appendChild(self.element);
-		return self
+		return self;
 	}
 	addDropDown(options.head)
 });
