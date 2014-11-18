@@ -5,42 +5,39 @@ window.addEventListener('load',function(){
 	var options = //JSON.parse(xhr.responseText);
 {
 	head: [
-		{next:'interest', value:"I'm interested in"},
-		{next:'interest', value:"I want to study"},
-		{next:'profession', value:"I want to be"},
+		{next:'compsci', value:"Computer Science"},
+		{next:'eleceng', value:"Electrical Engineering"},
+		{next:'biology', value:"Biology"},
 	],
-	interest: [
-		{next: undefined, value:"programming"},
-		{next: undefined, value:"graphics Design"},
-		{next: undefined, value:"mathematics"},
+	compsci: [
+		{next: undefined, value:"Programming"},
+		{next: undefined, value:"Graphics Design"},
 	],
-	profession: [
-		{next: undefined, value:"a programmer"},
-		{next: undefined, value:"a web designer"},
-		{next: 'pokemon', value:"the very best"},
+	eleceng: [
+		{next: undefined, value:"Electrical Engineering"},
+		{next: undefined, value:"Mathematics"},
+		{next: undefined, value:"Physics"},
 	],
-	pokemon: [
-		{next: undefined, value:"like no one ever was.  To catch them is my real test.  To train them is my cause"},
+	biology: [
+		{next: undefined, value:"Bology"},
+		{next: undefined, value:"Botany"},
+		{next: undefined, value:"Zoology"},
 	],
-	background: [
-		{value:"#00f", display:"Blue"},
-	],
-	style: [
-		
-	],
-	none: [],
+	background: [ "" ],
 };
 	var form = document.getElementById('form');
 	
 	var numDropdowns = 0;
 	
 	function addDropDown(opts){
-		numDropdowns++;
 		var self = {
 			remove: function(){
 					numDropdowns--;
 					form.removeChild(self.element);
-					if (self.next) self.next.remove();
+					if (self.next){
+						self.next.remove();
+						self.next = undefined;
+					}
 				},
 			element: document.createElement('select'),
 			next: undefined,
@@ -63,16 +60,17 @@ window.addEventListener('load',function(){
 		defaultSelection.disabled = true;
 		
 		self.element.addEventListener('change',function(){
-			console.log(this.selectedOptions[0].value);
-			if (self.next != opts[this.selectedIndex].next){
-				if (self.next)
-					self.next.remove();
-				if (opts[this.selectedIndex].next)
-					self.next = addDropDown(options[opts[this.selectedIndex].next]);
+			if (self.next){
+				self.next.remove();
+				self.next = undefined;
 			}
+			if (opts[this.selectedIndex].next)
+				self.next = addDropDown(options[opts[this.selectedIndex].next]);
+			form.submit(); //Update preview
 		});
+		numDropdowns++;
 		form.appendChild(self.element);
 		return self;
 	}
-	addDropDown(options.head)
+	addDropDown(options.head);
 });
